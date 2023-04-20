@@ -1,5 +1,5 @@
 {
-    "name": "whitecube/search-builder",
+    "name": "whitecube/laravel-search-builder",
     "description": "A package to build fast, index-friendly search queries for Laravel",
     "require": {
         "laravel/framework": "^10.8",
