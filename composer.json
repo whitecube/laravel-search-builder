@@ -1,0 +1,30 @@
+{
+    "name": "whitecube/search-builder",
+    "description": "A package to build fast, index-friendly search queries for Laravel",
+    "require": {
+        "laravel/framework": "^10.8",
+        "staudenmeir/laravel-cte": "^1.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.5",
+        "laravel/pint": "^1.8",
+        "orchestra/testbench": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Whitecube\\SearchBuilder\\": "src/",
+            "Whitecube\\SearchBuilder\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adrien Leloup",
+            "email": "adrien@whitecube.be"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
