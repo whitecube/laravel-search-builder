@@ -9,6 +9,12 @@ test('a search builder can be instanciated', function () {
     expect($builder)->toBeInstanceOf(SearchBuilder::class);
 });
 
+test('a search builder can be instanciated with a string class name', function () {
+    $builder = new SearchBuilder(FooModel::class);
+
+    expect($builder)->toBeInstanceOf(SearchBuilder::class);
+});
+
 test('a model with the trait can get a configured search builder', function () {
     $builder = FooModel::searchBuilder();
 

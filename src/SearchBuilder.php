@@ -25,8 +25,12 @@ class SearchBuilder
      */
     protected array $conditions = [];
 
-    public function __construct(Model $model)
+    public function __construct(string|Model $model)
     {
+        if (is_string($model)) {
+            $model = new $model;
+        }
+        
         $this->model = $model;
     }
 
@@ -88,8 +92,7 @@ class SearchBuilder
 
         return $this->query
             ->withExpression('id_and_total_score', $this->getScoreQuery())
-            ->leftJoin('id_and_total_score', 'id_and_total_score.id', $table.'.id')
-            ->whereRaw($table.'.id in (select id from id_and_total_score)')
+            ->innerJoin('id_and_total_score', $table.'.id', 'id_and_total_score.id')
             ->orderBy('score', 'desc');
     }
 
