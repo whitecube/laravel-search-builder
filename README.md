@@ -11,15 +11,13 @@ This means simply using this package as shown is not everything – you need to 
 composer require whitecube/laravel-search-builder
 ```
 
-## Usage
-
-### How to structure your query
+## How to structure your query
 
 To make your search queries extremely fast, the search builder will pack all of your conditions in a subquery that will aim to hit as many covering indexes as possible, in order to build an aggregated table that only contains ids of the pertinent models (along with a score, more on this later). This aggregated table will then be used to filter down the actual table with an inner join. This means that the processing of your search logic is done entirely on your indexes, and the full table is only accessed at the end, which dramatically speeds everything up.
 
 However, the package can not detect your database structure, so it is your responsibility to create your indexes correctly, and in such a way that your search condition queries will not have to access your main tables' data.
 
-Here's an example of what we're looking to achieve, in raw SQL. Given we have a products table, and we want to search it by reference and by name, and prioritise the reference over the name: 
+Here's an example of what we're looking to achieve, in raw SQL. Given that we have a products table, and we want to search it by reference and by name, and prioritise the reference over the name: 
 
 ```sql
 with id_and_total_score as (
@@ -45,7 +43,7 @@ inner join id_and_total_score on id_and_total_score.id = products.id
 order by score desc;
 ```
 
-### The search builder instance
+## The search builder instance
 
 You can get a search builder instance just by passing it the model you want to search.
 
@@ -71,7 +69,7 @@ class Product extends Model
 $builder = Product::searchBuilder();
 ```
 
-### Defining search conditions
+## Defining search conditions
 
 Once you have a search builder instance, you can use it to define your search conditions, by passing eloquent builder instances to the `search` method. 
 
@@ -115,7 +113,7 @@ Product::searchBuilder()
     });
 ```
 
-### Getting the results
+## Getting the results
 
 After defining your conditions, you can get the collection of results by calling the `get` method.
 
@@ -149,7 +147,7 @@ Thanks!
 
 When adding a new feature or fixing a bug, please add corresponding unit tests. The current set of tests is limited, but every unit test added will improve the quality of the package.
 
-Run PHPUnit by calling `composer test`.
+Run the test suite by calling `./vendor/bin/pest`.
 
 ## Made with ❤️ for open source
 
