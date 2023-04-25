@@ -92,7 +92,7 @@ class SearchBuilder
 
         return $this->query
             ->withExpression('id_and_total_score', $this->getScoreQuery())
-            ->innerJoin('id_and_total_score', $table.'.id', 'id_and_total_score.id')
+            ->join('id_and_total_score', $table.'.id', 'id_and_total_score.id')
             ->orderBy('score', 'desc');
     }
 
