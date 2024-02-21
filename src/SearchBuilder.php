@@ -84,6 +84,15 @@ class SearchBuilder
      */
     public function getQuery(): EloquentBuilder
     {
+        return $this->getQueryWithoutOrderBy()
+            ->orderBy('score', 'desc');
+    }
+
+    /**
+     * Build and get the search query
+     */
+    public function getQueryWithoutOrderBy(): EloquentBuilder
+    {
         if (is_null($this->query)) {
             $this->setQuery($this->model->query());
         }
@@ -92,8 +101,7 @@ class SearchBuilder
 
         return $this->query
             ->withExpression('id_and_total_score', $this->getScoreQuery())
-            ->join('id_and_total_score', $table.'.id', 'id_and_total_score.id')
-            ->orderBy('score', 'desc');
+            ->join('id_and_total_score', $table.'.id', 'id_and_total_score.id');
     }
 
     /**
