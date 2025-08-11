@@ -2,7 +2,7 @@
     "name": "whitecube/laravel-search-builder",
     "description": "A package to build fast, index-friendly search queries for Laravel",
     "require": {
-        "laravel/framework": "^9.0|^10.0|^11.0",
+        "laravel/framework": "^9.0|^10.0|^11.0|^12.0",
         "staudenmeir/laravel-cte": "^1.0"
     },
     "require-dev": {
